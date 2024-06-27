@@ -64,7 +64,8 @@ CREATE TABLE IF NOT EXISTS `projectx`.`followers` (
     FOREIGN KEY (`follower_id` , `following_id`)
     REFERENCES `projectx`.`user` (`id` , `id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION,
+    primary key(`follower_id`, `following_id`))
 ENGINE = InnoDB;
 
 
@@ -100,7 +101,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `projectx`.`media` ;
 
 CREATE TABLE IF NOT EXISTS `projectx`.`media` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL primary key,
   `media_type` VARCHAR(100) NOT NULL,
   `media_url` VARCHAR(100) NOT NULL,
   `post_id` INT NOT NULL,
@@ -138,7 +139,8 @@ CREATE TABLE IF NOT EXISTS `projectx`.`favorites` (
     FOREIGN KEY (`post_id`)
     REFERENCES `projectx`.`posts` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION,
+    primary key(`post_id`, `user_id`))
 ENGINE = InnoDB;
 
 
