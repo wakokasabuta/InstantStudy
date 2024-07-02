@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `projectx`.`user` (
   `email` VARCHAR(50) NOT NULL,
   `password_hash` VARCHAR(100) NOT NULL,
   `user_name` VARCHAR(45) NOT NULL,
-  `creation_date` VARCHAR(20) NULL,
+  `datetime` VARCHAR(20) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -40,7 +40,7 @@ DROP TABLE IF EXISTS `projectx`.`posts` ;
 
 CREATE TABLE IF NOT EXISTS `projectx`.`posts` (
   `id` INT NOT NULL,
-  `creation_data` VARCHAR(45) NOT NULL,
+  `datetime` VARCHAR(20) NOT NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `posts_id_fk`
