@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `projectx`.`user` (
   `email` VARCHAR(50) NOT NULL,
   `password_hash` VARCHAR(100) NOT NULL,
   `user_name` VARCHAR(45) NOT NULL,
-  `creation_date` VARCHAR(20) NULL,
+  `creation_date` DATETIME NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -40,7 +40,7 @@ DROP TABLE IF EXISTS `projectx`.`posts` ;
 
 CREATE TABLE IF NOT EXISTS `projectx`.`posts` (
   `id` INT NOT NULL,
-  `creation_data` VARCHAR(45) NOT NULL,
+  `creation_date` DATETIME NOT NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `posts_id_fk`
@@ -105,13 +105,7 @@ CREATE TABLE IF NOT EXISTS `projectx`.`media` (
   `media_type` VARCHAR(100) NOT NULL,
   `media_url` VARCHAR(100) NOT NULL,
   `post_id` INT NOT NULL,
-  INDEX `media_fk_idx` (`id` ASC) VISIBLE,
   INDEX `media_postid_fk_idx` (`post_id` ASC) VISIBLE,
-  CONSTRAINT `media_id_fk`
-    FOREIGN KEY (`id`)
-    REFERENCES `projectx`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `media_postid_fk`
     FOREIGN KEY (`post_id`)
     REFERENCES `projectx`.`posts` (`id`)
